@@ -12,11 +12,11 @@ if [ ! -f new.sh ]; then
 fi
 
 # Make the new directory, copy stuff in
-origdir=`pwd`
-mkdir ../$1
-cd ../$1
+origdir="$(pwd)"
+mkdir ../"$1"
+cd ../"$1"
 git init
-git fetch --depth=1 -n $origdir/.git
+git fetch --depth=1 -n "$origdir"/.git
 git reset --hard $(git commit-tree FETCH_HEAD^{tree} -m "Initial commit")
 
 # Remove superfluous stuff
